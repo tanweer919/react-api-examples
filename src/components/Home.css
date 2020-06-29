@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.quote-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  background: white;
+  border-radius: 4%;
+  padding: 20px;
+}
+.quote-refresh-button {
+  text-decoration: none;
+  color: white;
+  background: #4bb543;
+  font-size: 20px;
+  border: none;
+  font-family: inherit;
+  font-weight: 00%;
+  padding: 10px;
+}
+.quote-refresh-button:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
+.quote-refresh-button:hover {
+  cursor: pointer;
+}
+.quote-content {
+  font-size: 24px;
+  font-weight: 500%;
+  margin: 10px;
+}
