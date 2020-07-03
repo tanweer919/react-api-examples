@@ -1,13 +1,14 @@
 import React from "react";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const links = [
-    { title: "Home", position: "left" },
-    { title: "About", position: "left" },
-    { title: "Contact", position: "left" },
-    { title: "Login", position: "right" },
-    { title: "Register", position: "right" },
+    { title: "Home", position: "left", to: "/home" },
+    { title: "About", position: "left", to: "/about" },
+    { title: "Contact", position: "left", to: "/contact" },
+    { title: "Login", position: "right", to: "/login" },
+    { title: "Register", position: "right", to: "/register" },
   ];
   const handleClick = (message) => {
     console.log(message);
@@ -25,7 +26,9 @@ const NavBar = () => {
               }}
               key={i}
             >
-              {link.title}
+              <Link className="link" to={link.to}>
+                {link.title}
+              </Link>
             </div>
           ))}
       </div>
@@ -40,7 +43,9 @@ const NavBar = () => {
               }}
               key={i}
             >
-              {link.title}
+              <Link className="link" to={link.to}>
+                {link.title}
+              </Link>
             </div>
           ))}
       </div>
