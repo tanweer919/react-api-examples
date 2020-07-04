@@ -1,0 +1,18 @@
+.register-box {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  width: 50vh;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+.register {
+  margin: 0 auto;
+  width: fit-content;
+}

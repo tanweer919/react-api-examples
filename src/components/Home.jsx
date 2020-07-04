@@ -1,19 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
+import QuoteBox from "./QuoteBox";
 import "./Home.css";
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: "Loading quotes...",
+      quote: "",
+      loaded: false,
     };
   }
   async componentDidMount() {
     const body = await axios.get("https://type.fit/api/quotes");
     this.quotes = body.data;
-    this.setState({
-      quote: this.quotes[Math.floor(Math.random() * this.quotes.length)].text,
-    });
+    setTimeout(()=> {
+      this.setState({
+        quote: this.quotes[Math.floor(Math.random() * this.quotes.length)].text,
+        loaded: true,
+      });
+    }, 5000)
   }
   handleClick = async () => {
     this.setState({
@@ -24,14 +29,12 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="quote-box">
-          <div className="quote-content">{this.state.quote}</div>
-          <div className="quote-refresh">
-            <button className="quote-refresh-button" onClick={this.handleClick}>
-              Get new Quote
-            </button>
-          </div>
-        </div>
+        <QuoteBox
+          className=""
+          quote={this.state.quote}
+          handleClick={this.handleClick}
+          loaded={this.state.loaded}
+        />
       </div>
     );
   }

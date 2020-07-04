@@ -7,6 +7,8 @@ import Register from "./components/register";
 import NotFound from "./components/NotFound";
 import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   BrowserRouter as Router,
   Route,
@@ -20,6 +22,7 @@ class App extends Component {
     return (
       <div id="app">
         <Router>
+          <ToastContainer />
           <NavBar />
           <Switch>
             <Route path="/home" exact component={Home} />
