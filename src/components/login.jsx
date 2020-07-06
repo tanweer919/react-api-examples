@@ -7,25 +7,30 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      data: {
+        email: "",
+        password: "",
+      },
+      error: {},
     };
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.email !== "" && this.state.password.length >= 8) {
+    const { email, password } = this.state.data;
+    if (email !== "" && password.length >= 8) {
       console.log(this.state);
     } else {
-      toast.error("⚠️ Input is invalid");
+      toast.error("⚠️Input is invalid");
     }
   };
 
   handleChange = (e) => {
-    let currentState = this.state;
-    currentState[e.currentTarget.name] = e.currentTarget.value;
-    this.setState(currentState);
+    let currentData = this.state.data;
+    currentData[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ data: currentData });
   };
   render() {
+    const { email, password } = this.state.data;
     return (
       <div className="login-container">
         <div className="form">
@@ -41,6 +46,7 @@ class Login extends Component {
                 type="email"
                 eid="email"
                 name="email"
+                value={email}
                 handleChange={this.handleChange}
               />
             </div>
@@ -52,6 +58,7 @@ class Login extends Component {
                 type="password"
                 eid="password"
                 name="password"
+                value={password}
                 handleChange={this.handleChange}
               />
             </div>

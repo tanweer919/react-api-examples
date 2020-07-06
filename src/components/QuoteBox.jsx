@@ -10,7 +10,7 @@ const QuoteBox = ({ quote, handleClick, loaded }) => {
           quote
         ) : (
           <Spinner
-            name="three-bounce"
+            name="pacman"
             color="green"
             fadeIn={0}
             style={{ height: "50px" }}
