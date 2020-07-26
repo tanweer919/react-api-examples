@@ -1,10 +1,20 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Modal from "./Modal";
 const About = () => {
+  const [modalVisible, changeModalVisiblity] = useState(false);
+  const handleClick = () => {
+    changeModalVisiblity(true);
+  };
+
+  const handleClose = () => {
+    changeModalVisiblity(false);
+  };
   return (
-    <div className="content">
-      <h1>API Example Website</h1>
-      <p>This website is to show you an example how to use an api.</p>
+    <div className="content" id="about">
+      <button className="quote-refresh-button" onClick={handleClick}>
+        Open Modal
+      </button>
+      <Modal visible={modalVisible} onModalClose={handleClose}></Modal>
     </div>
   );
 };

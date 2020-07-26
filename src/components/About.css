@@ -1,0 +1,42 @@
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quote-refresh-button {
+  text-decoration: none;
+  color: white;
+  background: #4bb543;
+  font-size: 20px;
+  border: none;
+  font-family: inherit;
+  font-weight: 00%;
+  padding: 10px;
+}
+.quote-refresh-button:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
+.quote-refresh-button:hover {
+  cursor: pointer;
+}
+#modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#modal .content {
+  width: 50vw;
+  height: 50vh;
+  background-color: white;
+}
+#modal.not-visible {
+  display: none;
+}

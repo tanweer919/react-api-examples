@@ -1,44 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import QuoteBox from "./QuoteBox";
+import { connect } from "react-redux";
+import { initHome, setRandomQuote } from "../store/actions/homeActions";
 import "./Home.css";
-const Home = () => {
-  const [state, setState] = useState({
-    quote: "",
-    loaded: false,
-    quotes: [],
-  });
+const Home = ({ quote, loaded, quotes, initHome, setRandomQuote }) => {
   useEffect(() => {
     const fetchData = async () => {
       const body = await axios.get("https://type.fit/api/quotes");
-      setState({
-        quote: body.data[Math.floor(Math.random() * body.data.length)].text,
-        loaded: true,
-        quotes: body.data,
-      });
+      initHome(
+        body.data[Math.floor(Math.random() * body.data.length)].text,
+        body.data
+      );
     };
     fetchData();
   }, []);
   const handleClick = async () => {
-    const currentState = { ...state };
-    currentState.quote =
-      currentState.quotes[
-        Math.floor(Math.random() * currentState.quotes.length)
-      ].text;
-    currentState.loaded = true;
-    setState(currentState);
+    setRandomQuote();
   };
 
   return (
     <div className="container">
       <QuoteBox
         className=""
-        quote={state.quote}
+        quote={quote}
         handleClick={handleClick}
-        loaded={state.loaded}
+        loaded={loaded}
       />
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = (state, ownProps) => {
+  const { quote, loaded, quotes } = state.home;
+  return {
+    quote,
+    loaded,
+    quotes,
+  };
+};
+
+const mapDispatchToProps = { initHome, setRandomQuote };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
